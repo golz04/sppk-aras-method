@@ -15,6 +15,29 @@
         <div class="flex-none w-full max-w-full px-3">
             <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                 <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                    <h6>Import File</h6>
+                </div>
+                <hr class="h-px mt-0 bg-transparent bg-gradient-horizontal-dark">
+                <form method="POST" enctype="multipart/form-data" action="{{url('laptop/import')}}">
+                    @csrf
+                    <div class="p-0 overflow-x-auto">
+                        <div class="mx-6 mb-4">
+                            <label class="text-gray-700 ml-1" for="importFile">Import File CSV : </label>
+                            <input type="file" name="importFile" class="form-input w-full block rounded mt-1 p-2 border-2 @error('importFile') border-red-500 @enderror focus:outline-none border-pink-500" placeholder="Import File CSV" value="{{old('importFile')}}">
+                            @error('importFile')
+                            <span class="pl-1 text-xs text-red-600 text-bold">
+                                {{$message}}
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="p-0 overflow-x-auto">
+                            <div class="mr-12 text-right mt-4">
+                                <input type="submit" value="Import" class="inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-size-xs hover:scale-102 active:shadow-soft-xs tracking-tight-soft border-fuchsia-500 text-fuchsia-500 hover:border-fuchsia-500 hover:bg-transparent hover:text-fuchsia-500 hover:opacity-75 hover:shadow-none active:bg-fuchsia-500 active:text-white active:hover:bg-transparent active:hover:text-fuchsia-500">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                     <h6>Tambah Data Laptop</h6>
                 </div>
                 <hr class="h-px mt-0 bg-transparent bg-gradient-horizontal-dark">

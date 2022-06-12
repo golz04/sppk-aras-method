@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Laptop;
 
+use App\Imports\LaptopsImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class LaptopController extends Controller
 {
     private $param;
@@ -82,5 +85,21 @@ class LaptopController extends Controller
         } catch (\Illuminate\Database\QueryException $e) {
             return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
         }
+    }
+
+    public function importFile(Request $request)
+    {
+        // $request->validate([
+        //     'importFile' => 'required|mimes:csv,xls,xlsx'
+        // ]);
+
+        $file = $request->file('importFile');
+        $fileName = rand().$file->getClientOriginalName();
+
+        $file->move('files/',$fileName);
+
+        Excel::import(new LaptopsImport, public_path('files/'.$fileName));
+
+        return redirect('laptop');
     }
 }

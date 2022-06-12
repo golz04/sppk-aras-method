@@ -24,6 +24,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     Route::get('laptop', [LaptopController::class, 'index'])->name('laptop');
     Route::post('laptop/store', [LaptopController::class, 'store']);
+    Route::post('laptop/import', [LaptopController::class, 'importFile']);
 });
 
 // Route::get('/dashboard', function () {
