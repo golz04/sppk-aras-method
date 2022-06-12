@@ -10,7 +10,7 @@
                     <div>
                     <p class="mb-0 font-sans font-semibold leading-normal text-size-sm">Total User</p>
                     <h5 class="mb-0 font-bold">
-                        [getCountUser]
+                        {{$getCountUser}}
                     </h5>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                     <div>
                     <p class="mb-0 font-sans font-semibold leading-normal text-size-sm">Total Laptop</p>
                     <h5 class="mb-0 font-bold">
-                        [getCountLaptop]
+                        {{$getCountLaptop}}
                     </h5>
                     </div>
                 </div>
