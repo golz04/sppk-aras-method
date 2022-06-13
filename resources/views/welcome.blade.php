@@ -22,8 +22,8 @@
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="antialiased bg-slate-200 p-20">
-        <h1 class="font-bold text-4xl text-center">SISTEM REKOMENDASI LAPTOP</h1>
-        <h5 class="font-bold text-center">Metode ARAS (Additive Ratio Assessment)</h5>
+        <h1 class="font-black text-5xl text-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text ">SISTEM REKOMENDASI LAPTOP</h1>
+        <h5 class="font-bold text-center text-purple-600">Metode ARAS (Additive Ratio Assessment)</h5>
         <div class="bg-slate-200">
             <div class="relative flex flex-col min-w-0 mt-26 break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border">
                 <div class="p-6 pb-0 mb-0 bg-transparent border-b-0 rounded-t-2xl">
@@ -33,8 +33,9 @@
                     <form role="form">
                         <label class="mb-2 ml-1 font-bold text-size-xs text-slate-700">Tipe Laptop</label>
                         <div class="mb-4">
-                            <input type="text" class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                            <input type="text" class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" placeholder="Tipe Laptop (contoh: gaming, ultrabook, notebook dll)" aria-label="Tipe Laptop">
                         </div>
+                        <label class="mb-2 ml-1 font-bold text-size-xs text-slate-700">Ukuran Layar</label>
                         <div class="mb-4 flex w-full">
                             <div class="w-full">
                                 <select class="form-select appearance-none
@@ -54,31 +55,31 @@
                                 ease-in-out
                                 m-0
                                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
+                                    <option selected disabled>Pilih Ukuran Layar</option>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>
                                     <option value="3">Three</option>
                                 </select>
                             </div>
                         </div>
-                        <label class="mb-2 ml-1 font-bold text-size-xs text-slate-700">Password</label>
-                        <div class="mb-4">
-                            <input type="email" class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
-                        </div>
-                        <div class="min-h-6 mb-0.5 block pl-12">
-                            <input id="rememberMe" class="mt-0.54 rounded-10 duration-250 ease-soft-in-out after:rounded-circle after:shadow-soft-2xl after:duration-250 checked:after:translate-x-5.25 h-5-em relative float-left -ml-12 w-10 cursor-pointer appearance-none border border-solid border-gray-200 bg-slate-800/10 bg-none bg-contain bg-left bg-no-repeat align-top transition-all after:absolute after:top-px after:h-4 after:w-4 after:translate-x-px after:bg-white after:content-[''] checked:border-slate-800/95 checked:bg-slate-800/95 checked:bg-none checked:bg-right" type="checkbox" checked="">
-                            <label class="mb-2 ml-1 font-normal cursor-pointer select-none text-size-sm text-slate-700" for="rememberMe">Remember me</label>
+                        <label class="mb-2 ml-1 font-bold text-size-xs text-slate-700">Range Harga</label>
+                        <div class="flex justify-between place-content-center w-full">
+                            <div class="mb-4 w-6/12">
+                                <input type="text" class="focus:shadow-soft-primary-outline text-size-sm leading-6.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" placeholder="batas bawah (dalam rupiah)" aria-label="batas bawah" aria-describedby="password-addon">
+                            </div>
+                            <p class="text-4xl font-bold mx-3">-</p>
+                            <div class="mb-4 w-6/12">
+                                <input type="text" class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" placeholder="batas atas (dalam rupiah)" aria-label="batas atas" aria-describedby="password-addon">
+                            </div>
                         </div>
                         <div class="text-center">
-                            <button type="button" class="inline-block w-full px-6 py-3 mt-6 mb-0 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-size-xs ease-soft-in tracking-tight-soft bg-gradient-cyan hover:scale-102 hover:shadow-soft-xs active:opacity-85">Sign in</button>
+                            <button type="button" class="inline-block w-3/12 px-6 py-3 mt-6 mb-0 font-bold text-center text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-size-xs ease-soft-in tracking-tight-soft bg-gradient-to-r from-indigo-500 to-pink-500 hover:scale-102 hover:shadow-soft-xs active:opacity-85">Lihat Rekomendasi</button>
                         </div>
                     </form>
-                </div>
-                <div class="p-6 px-1 pt-0 text-center bg-transparent border-t-0 border-t-solid rounded-b-2xl lg:px-2">
-                    <p class="mx-auto mb-6 leading-normal text-size-sm">
-                    Don't have an account?
-                    <a href="../pages/sign-up.html" class="relative z-10 font-semibold text-transparent bg-gradient-cyan bg-clip-text">Sign up</a>
-                    </p>
+                    <div class="text-center mt-4">
+                    <a class="cursor-pointer text-size-xl font-bold underline decoration-solid text-purple-600">Reset Data</a>
+                    </div>
+                    
                 </div>
             </div>
         </div>
