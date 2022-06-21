@@ -43,6 +43,44 @@
                                 @enderror
                             </div>
                         </div>
+                        {{-- <div class="p-0 overflow-x-auto">
+                            <div class="mx-6 mb-4">
+                                <label class="text-gray-700 ml-1" for="memory_type">Tipe Memori : </label>
+                                <select name="memory_type" class="form-input w-full block rounded mt-1 p-2 border-2 @error('memory_type') border-red-500 @enderror focus:outline-none border-pink-500">
+                                    <option value="SSD"> SSD</option>
+                                    <option value="HDD"> HDD</option>
+                                    <option value="Hybrid"> Hybrid</option>
+                                    <option value="Flash"> Flash</option>   
+                                </select>
+                                @error('type_name')
+                                <span class="pl-1 text-xs text-red-600 text-bold">
+                                    {{$message}}
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="p-0 overflow-x-auto">
+                            <div class="mx-6 mb-4">
+                                <label class="text-gray-700 ml-1" for="memory">Memori : </label>
+                                <input type="text" name="memory" class="form-input w-full block rounded mt-1 p-2 border-2 @error('memory') border-red-500 @enderror focus:outline-none border-pink-500" placeholder="Tipe Memori" value="{{old('memory')}}">
+                                @error('memory')
+                                <span class="pl-1 text-xs text-red-600 text-bold">
+                                    {{$message}}
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="p-0 overflow-x-auto">
+                            <div class="mx-6 mb-4">
+                                <label class="text-gray-700 ml-1" for="ram">Ram : </label>
+                                <input type="text" name="ram" class="form-input w-full block rounded mt-1 p-2 border-2 @error('ram') border-red-500 @enderror focus:outline-none border-pink-500" placeholder="Ram" value="{{old('ram')}}">
+                                @error('ram')
+                                <span class="pl-1 text-xs text-red-600 text-bold">
+                                    {{$message}}
+                                </span>
+                                @enderror
+                            </div>
+                        </div> --}}
                         <div class="p-0 overflow-x-auto">
                             <div class="mx-6 mb-4">
                                 <label class="text-gray-700 ml-1" for="inches">Ukuran : </label>
@@ -111,23 +149,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($getLaptop as $item)  
-                                <tr>
-                                    <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$loop->iteration}}</span></td>
-                                    <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->company}}</span></td>
-                                    <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->product}}</span></td>
-                                    <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->type_name}}</span></td>
-                                    <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->inches}}</span></td>
-                                    <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->screen_resolution}}</span></td>
-                                    <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->cpu}}</span></td>
-                                    <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->ram}}</span></td>
-                                    <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->memory}}</span></td>
-                                    <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->gpu}}</span></td>
-                                    <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->operating_system}}</span></td>
-                                    <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->weight}}</span></td>
-                                    <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->price_euros}}</span></td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><a href="javascript:;" class="font-semibold leading-tight text-size-xs text-slate-400"> Hapus </a></td>
-                                </tr>
+                                @foreach ($dataUrutFinal as $key => $itemFinal)
+                                    @php
+                                        $number = 0;
+                                    @endphp    
+                                    @foreach ($getLaptop as $item)  
+                                        @if ($itemFinal['id'] == $item->id)  
+                                        <tr>
+                                            <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$loop->iteration}}</span></td>
+                                            <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->company}}</span></td>
+                                            <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->product}}</span></td>
+                                            <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->type_name}}</span></td>
+                                            <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->inches}}</span></td>
+                                            <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->screen_resolution}}</span></td>
+                                            <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->cpu}}</span></td>
+                                            <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->ram}}</span></td>
+                                            <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->memory}}</span></td>
+                                            <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->gpu}}</span></td>
+                                            <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->operating_system}}</span></td>
+                                            <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->weight}}</span></td>
+                                            <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><span class="font-semibold leading-tight text-size-xs text-slate-400">{{$item->price_euros}}</span></td>
+                                            <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent"><a href="javascript:;" class="font-semibold leading-tight text-size-xs text-slate-400"> Hapus </a></td>
+                                        </tr>
+                                        @endif
+                                    @endforeach
                                 @endforeach
                             </tbody>
                         </table>

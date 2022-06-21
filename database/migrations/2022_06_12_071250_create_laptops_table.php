@@ -16,6 +16,7 @@ class CreateLaptopsTable extends Migration
         Schema::create('laptops', function (Blueprint $table) {
             $table->id();
             $table->string('company')->nullable();
+            $table->string('memory_type')->nullable();
             $table->string('product')->nullable();
             $table->string('type_name')->nullable();
             $table->string('inches')->nullable();
