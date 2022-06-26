@@ -165,50 +165,39 @@
                         <p class="mb-0 text-center md:text-left">Silahkan Masukkan Spesifikasi Laptop yang Diinginkan</p>
                     </div>
                     <div class="flex-auto p-6">
-                        <form role="form">
-                            <label class="mb-2 ml-1 font-bold text-size-xs text-slate-700">Tipe Laptop</label>
+                        <form method="POST" action="{{url('/rekomendasi/find')}}">
+                            @csrf
+                            <label class="mb-2 ml-1 font-bold text-size-xs text-slate-700">Ukuran Layar (Inci) :</label>
                             <div class="mb-4">
-                                <input type="text" class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" placeholder="Tipe Laptop (contoh: gaming, ultrabook, notebook dll)" aria-label="Tipe Laptop">
+                                <input type="text" class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" placeholder="Ukuran Layar (contoh: 13.3, 15.6, 10, dll)" aria-label="Tipe Laptop" name="inches">
                             </div>
-                            <label class="mb-2 ml-1 font-bold text-size-xs text-slate-700">Ukuran Layar</label>
+                            <label class="mb-2 ml-1 font-bold text-size-xs text-slate-700">Nama Tipe :</label>
                             <div class="mb-4 flex w-full">
                                 <div class="w-full">
-                                    <select class="form-select appearance-none
-                                    block
-                                    w-full
-                                    px-3
-                                    py-1.5
-                                    leading-5.6 
-                                    ease-soft
-                                    text-base
-                                    font-normal
-                                    text-gray-700
-                                    bg-white bg-clip-padding bg-no-repeat
-                                    border border-solid border-gray-300
-                                    rounded
-                                    transition
-                                    ease-in-out
-                                    m-0
-                                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-                                        <option selected disabled>Pilih Ukuran Layar</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                    <select class="form-select appearance-none block w-full px-3 py-1.5 leading-5.6 ease-soft text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example" name="type_name">
+                                        <option selected disabled>Pilih Tipe Laptop</option>
+                                        <option value="2 in 1 Convertible"> 2 in 1 Convertible</option>
+                                        <option value="Carolyn Randolph"> Carolyn Randolph</option>
+                                        <option value="Gaming"> Gaming</option>
+                                        <option value="Netbook"> Netbook</option>
+                                        <option value="Notebook"> Notebook</option>
+                                        <option value="Ultrabook"> Ultrabook</option>
+                                        <option value="Workstation"> Workstation</option>
                                     </select>
                                 </div>
                             </div>
                             <label class="mb-2 ml-1 font-bold text-size-xs text-slate-700">Range Harga</label>
                             <div class="flex justify-between place-content-center w-full">
                                 <div class="mb-4 w-6/12">
-                                    <input type="text" class="focus:shadow-soft-primary-outline text-size-sm leading-6.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" placeholder="batas bawah (dalam rupiah)" aria-label="batas bawah" aria-describedby="password-addon">
+                                    <input type="text" class="focus:shadow-soft-primary-outline text-size-sm leading-6.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" placeholder="batas bawah (dalam rupiah)" aria-label="batas bawah" aria-describedby="password-addon" name="minimum_price">
                                 </div>
                                 <p class="text-4xl font-bold mx-3">-</p>
                                 <div class="mb-4 w-6/12">
-                                    <input type="text" class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" placeholder="batas atas (dalam rupiah)" aria-label="batas atas" aria-describedby="password-addon">
+                                    <input type="text" class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" placeholder="batas atas (dalam rupiah)" aria-label="batas atas" aria-describedby="password-addon" name="maximum_price">
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="button" class="inline-block md:w-3/12 px-6 py-3 mt-6 mb-0 font-bold text-center text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-size-xs ease-soft-in tracking-tight-soft bg-gradient-to-r from-indigo-500 to-pink-500 hover:scale-102 hover:shadow-soft-xs active:opacity-85">Lihat Rekomendasi</button>
+                                <button type="submit" class="inline-block md:w-3/12 px-6 py-3 mt-6 mb-0 font-bold text-center text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-size-xs ease-soft-in tracking-tight-soft bg-gradient-to-r from-indigo-500 to-pink-500 hover:scale-102 hover:shadow-soft-xs active:opacity-85">Lihat Rekomendasi</button>
                             </div>
                             <div class="text-center mt-4">
                                 <button type="reset" class="cursor-pointer text-size-xl font-bold underline decoration-solid text-purple-600">

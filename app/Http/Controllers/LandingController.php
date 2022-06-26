@@ -5,15 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Laptop;
 
-class KalkulasiAdminController extends Controller
+class LandingController extends Controller
 {
     private $param;
+    public function redirects(){
+        try {
+            return redirect('/rekomendasi');
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return $response;
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
+    }
+
     public function index(){
         try {
-            // $this->param['getCountUser'] = User::count();
-            $this->param['getLaptop'] = [];
-    
-            return view('admin.pages.kalkulasi-empty', $this->param);
+            return view('welcome');
         } catch (\Exception $e) {
             $response = $e->getMessage();
             return $response;
@@ -41,7 +49,6 @@ class KalkulasiAdminController extends Controller
         try {
             $priceMinim = (int)$request->get('minimum_price');
             $priceMax = (int)$request->get('maximum_price');
-
             $this->param['getLaptop'] = Laptop::where('type_name', 'like', '%'.$request->get('type_name').'%')
                                                 ->where('inches', 'like', '%'.$request->get('inches').'%')
                                                 // ->where('memory', 'like', '%'.$request->get('memory').'%')
@@ -57,6 +64,7 @@ class KalkulasiAdminController extends Controller
             //                                     // ->where('memory_type', 'like', '%'.$request->get('memory_type').'%')
             //                                     ->whereBetween('price_euros', [1000000, 7000000])
             //                                     ->get();
+
             // startDataAlternatif
             $dataAlternatif = array();
             $noAlternatif = 1;
@@ -258,7 +266,7 @@ class KalkulasiAdminController extends Controller
             // endNormalisasiFinal
     
             // return view('admin.pages.kalkulasi', ['getLaptop' => $this->param['getLaptop'], 'dataUrutFinal' => $dataNormalisasiFinalSIKI]);
-            return view('admin.pages.kalkulasi', $this->param);
+            return view('rekomendasi', $this->param);
         } catch (\Exception $e) {
             $response = $e->getMessage();
             return $response;

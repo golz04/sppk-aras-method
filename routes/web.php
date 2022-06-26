@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LaptopController;
 use App\Http\Controllers\KalkulasiAdminController;
+use App\Http\Controllers\LandingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,9 +16,11 @@ use App\Http\Controllers\KalkulasiAdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () { return view('welcome'); });
+
+Route::get('/', [LandingController::class, 'redirects']);
+Route::get('/rekomendasi', [LandingController::class, 'index']);
+Route::post('/rekomendasi/find', [LandingController::class, 'find']);
 
 
 Route::group(['middleware' => ['auth']], function(){
